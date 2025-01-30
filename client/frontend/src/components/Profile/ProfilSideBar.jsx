@@ -31,6 +31,13 @@ const ProfilSideBar = ({ data }) => {
 
 
      {role ==="user" && (<div className="w-full flex-col items-center justify-center hidden lg:flex">
+      <button
+      className=""
+        onClick={handleLogout}
+      >
+        Log Out
+        <FaArrowRightFromBracket className="ms-4" />
+      </button>
         <Link
           to="/profile"
           className="text-zinc-100 font-semibold w-full py-2 text-center hover:bg-zinc-900 rounded transition-all duration-300"
@@ -49,6 +56,7 @@ const ProfilSideBar = ({ data }) => {
         >
           Settings
         </Link>
+
       </div>)} 
   
       {role==="admin" &&(<div className="w-full flex-col items-center justify-center hidden lg:flex">
@@ -58,17 +66,25 @@ const ProfilSideBar = ({ data }) => {
         >
           All Orders
         </Link> */}
+        
         <Link
           to="/profile/add-book"
           className="text-zinc-100 font-semibold w-full py-2 mt-4 text-center hover:bg-zinc-900 rounded transition-all duration-300"
         >
            Add Book
         </Link>
+        <button
+        onClick={handleLogout}
+        className=""
+      >
+        Log Out
+        <FaArrowRightFromBracket className="ms-4" />
+      </button>
 
       </div>) }
 
       <button
-        className="bg-zinc-900 w-3/6 lg:w-full mt-4 lg:mt-0 text-white font-semibold flex items-center justify-center py-2 rounded hover:bg-white hover:text-zinc-900 transition-all duration-300"
+        className="bg-zinc-900 w-3/6 sm:hidden lg:w-full mt-4 lg:mt-0 text-white font-semibold flex items-center justify-center py-2 rounded hover:bg-white hover:text-zinc-900 transition-all duration-300"
         onClick={handleLogout}
       >
         Log Out
@@ -79,3 +95,7 @@ const ProfilSideBar = ({ data }) => {
 };
 
 export default ProfilSideBar;
+
+
+
+ 

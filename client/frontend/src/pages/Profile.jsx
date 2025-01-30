@@ -5,7 +5,6 @@ import {useSelector} from 'react-redux'
 import axios from 'axios'
 import Loader from '../components/Loader/Loader'
 import MobileProfileNavbar from '../components/Profile/MobileProfileNavbar'
-import { path } from '../url'
 const Profile = () => {
   // const isLoggedIn =useSelector()
   const [profile,setProfile]=useState()
@@ -16,17 +15,17 @@ const Profile = () => {
      useEffect(()=>{
    const fetch=async()=>{
 
-     const response=await axios.get(`${path}/Api/v1/get-user-information`,{headers})
+     const response=await axios.get("http://localhost:4010/Api/v1/get-user-information",{headers})
      setProfile(response.data)
    }
    fetch()
      },[])
 
   return (
-    <div className='bg-zinc-900 px-2 md:px-12 flex flex-col md:flex-row  py-8 gap-4 text-white'>
+    <div className='bg-zinc-900 px-2 md:px-12 flex flex-col md:flex-row h-screen py-8 gap-4 text-white '>
       
       {!profile && <div className='w-full h-[100%] flex items-center justify-center'><Loader/></div>}
-      {profile &&<> <div className='w-full md:w-1/6 h-auto lg:h-screen '><ProfilSideBar data={profile}/>
+      {profile &&<> <div className='w-full md:w-1/6 h-auto lg:h-screen  '><ProfilSideBar data={profile}/>
       
       <MobileProfileNavbar/>
       </div>

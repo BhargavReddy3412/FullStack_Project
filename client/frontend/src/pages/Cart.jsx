@@ -3,7 +3,6 @@ import Loader from "../components/Loader/Loader";
 import axios from "axios";
 import { MdDelete } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import { path } from "../url";
 
 const Cart = () => {
   const [cart, setCart] = useState();
@@ -16,7 +15,7 @@ const Cart = () => {
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(
-        `${path}/Api/v1/get-user-cart`,
+        "http://localhost:4010/Api/v1/get-user-cart",
         { headers }
       );
       setCart(response.data.data);
@@ -26,7 +25,7 @@ const Cart = () => {
 
   const handledeleteItem     = async (bookid) => {
     const response = await axios.put(
-      ` ${path}/Api/v1/remove-from-cart/${bookid}`,
+      `http://localhost:4010/Api/v1/remove-from-cart/${bookid}`,
       {},
       { headers }
     );
@@ -48,7 +47,7 @@ const Cart = () => {
   const handlePlaceOrder = async () => {
     try {
       const response = await axios.post(
-        `${path}/Api/v1/place-order`,
+        `http://localhost:4010/Api/v1/place-order`,
         { order: cart },
         { headers }
       );
@@ -60,10 +59,8 @@ const Cart = () => {
     }
   };
 
- 
-
   return (
-    <div className="bg-zinc-900 px-12 h-screen py-8">
+    <div className={`bg-zinc-900 px-12 ${setCart.length>1 ?"h-auto":"min-h-screen"}  py-8`}>
       {!cart && <div className="w-full h-[100%] flex items-center justify-center"> <Loader /></div>}
       {cart && cart.length === 0 && (
         <div className="h-screen">
@@ -91,16 +88,16 @@ const Cart = () => {
                 className="h-[20vh] md:h-[10vh] object-cover"
               />
               <div className="w-full md:w-auto">
-                <h1 className="text-2xl text-zinc-100 font-semibold text-start mt-2 md:mt-0">
+                <h1 className="text-2xl text-zinc-100 font-semibold text-start mt-2 md:mt-0 md:ml-3">
                   {item.title}
                 </h1>
                 <p className="text-normal text-zinc-300 mt-2 hidden lg:block">
                   {item.desc.slice(0, 100)}...
                 </p>
-                <p className="text-normal text-zinc-300 mt-2 hidden md:block lg:hidden">
+                <p className="text-normal text-zinc-300 mt-2 ml-3 hidden md:block lg:hidden">
                   {item.desc.slice(0, 65)}...
                 </p>
-                <p className="text-normal text-zinc-300 mt-2 block md:hidden">
+                <p className="text-normal text-zinc-300 mt-2  block md:hidden">
                   {item.desc.slice(0, 100)}...
                 </p>
               </div>
@@ -121,8 +118,8 @@ const Cart = () => {
       )}
 
       {cart && cart.length > 0 && (
-        <div className="mt-4 w-full flex items-center justify-end">
-          <div className="p-4 bg-zinc-800 rounded">
+        <div className="mt-4w-full flex items-center justify-end">
+          <div className="p-4 bg-zinc-800 rounded mr-12 ">
             <h1 className="text-3xl text-zinc-200 font-semibold ">
               Total Amount
             </h1>
@@ -134,9 +131,9 @@ const Cart = () => {
               </h2>
               <h2>₹{Total}</h2>
             </div>
-            <div className="w-[100%] mt-3">
+            <div className="w-[100%]  mt-3">
               <button
-                className="bg-zinc-100 rounded px-4 py-2 flex justify-center w-full font-semibold "
+                className="bg-zinc-100 rounded px-4 py-2  flex justify-center w-full font-semibold hover:bg-green-500 "
                 onClick={handlePlaceOrder}
               >
                 Place Your Order

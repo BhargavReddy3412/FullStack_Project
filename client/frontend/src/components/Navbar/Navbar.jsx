@@ -29,6 +29,10 @@ const Navbar = () => {
   const [MobileNav, setMobileNav] = useState("hidden");
 
   const role= useSelector((state) => state.auth.role);
+
+  if(role==="user"){
+    links.splice(3,1)
+  }
   
 
   if (isLoggedIn === false) {
@@ -63,7 +67,7 @@ const Navbar = () => {
                 {item.title === "Profile" ||item.title === "Admin Profile" ? (
                   <Link
                     to={item.link}
-                    className="px-4 py-1 border border-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300"
+                    className="px-4 py-1 border  border-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300"
                     key={index}
                   >
                     {item.title}
@@ -115,7 +119,7 @@ const Navbar = () => {
         {links.map((item, index) => (
           <Link
             to={item.link}
-            className={`${MobileNav} text-white text-4xl mb-4 font-semibold hover:text-blue-500 transition-all duration-300`}
+            className={`${MobileNav} text-white text-3xl mb-4 font-semibold hover:text-blue-500 transition-all duration-300`}
             key={index}
             onClick={() =>
               MobileNav === "hidden"

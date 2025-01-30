@@ -18,7 +18,7 @@ const Settings = () => {
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(
-         `${path}/Api/v1/get-user-information`,
+        `${path}/Api/v1/get-user-information`,
         { headers }
       );
       setValues({ address: response.data.address });

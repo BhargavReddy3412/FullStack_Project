@@ -1,7 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import axios from "axios";
 import { useParams,useNavigate } from 'react-router-dom';
-import { path } from '../url';
 
 const UpdateBook = () => {
   const  {id}=useParams()
@@ -40,7 +39,7 @@ const UpdateBook = () => {
             alert("All Fields are Required");
           } else {
             const response = await axios.put(
-              `${path}/Api/v1/update-book`,
+              "http://localhost:4010/Api/v1/update-book",
               Data,
               { headers }
             );
@@ -65,7 +64,7 @@ const UpdateBook = () => {
       useEffect(() => {
         const fetch = async () => {
           const response = await axios.get(
-            `${path}/Api/v1/get-book-by-id/${id}`
+            `http://localhost:4010/Api/v1/get-book-by-id/${id}`
           );
           setData(response.data.data);
         };

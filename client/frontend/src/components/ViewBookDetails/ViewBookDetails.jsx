@@ -72,7 +72,7 @@ const ViewBookDetails = () => {
                 <div className="flex flex-col md:flex-row lg:flex-col mt-4 lg:mt-0 items-center justify-between lg:justify-start">
                   <button className="bg-white rounded lg:rounded-full text-3xl p-3 text-red-500 flex items-center justify-center" onClick={handleFavourites}>
                     <FaHeart />
-                    <span className="ms-4 block lg:hidden">Add To Cart</span>
+                    <span className="ms-4 block lg:hidden">Add To Fav</span>
                   </button>
                   <button className="text-white rounded mt-8 md:mt-0 lg:rounded-full text-3xl p-3  lg:mt-8 bg-blue-500 flex items-center justify-center" onClick={handleAddToCart}>
                     <FaCartShopping />
@@ -84,13 +84,13 @@ const ViewBookDetails = () => {
               {isLoggedIn === true && role === "admin" && (
                 <div className="flex  flex-col md:flex-row lg:flex-col mt-4 lg:mt-0 items-center justify-between lg:justify-start">
                   <Link to={`/updateBook/${id}`} className="bg-white rounded lg:rounded-full text-3xl p-3 flex items-center justify-center">
-                  <FaEdit />
+                  <FaEdit />  
                     <span className="ms-4 block lg:hidden">Edit</span>
                   </Link>
-                  <button className="text-red-500 rounded mt-8 md:mt-0  lg:rounded-full text-3xl p-3  lg:mt-8 bg-white flex items-center justify-center" onClick={handleDeleteBook}>
+                  {/* <button className="text-red-500 rounded mt-8 md:mt-0  lg:rounded-full text-3xl p-3  lg:mt-8 bg-white flex items-center justify-center" onClick={handleDeleteBook}>
                   <MdDelete />
                     <span className="ms-4 block lg:hidden">Delete</span>
-                  </button>
+                  </button> */}
                 </div>
               )}
             </div>
