@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios"
+import { path } from "../../url";
 
 const BookCard = (props) => {
   let data = props.data;
@@ -13,7 +14,7 @@ const BookCard = (props) => {
   }
 
   const handleRemoveFavourites=async()=>{
-    const response=await axios.put("http://localhost:4010/Api/v1/delete-book-from-favourite",{},{headers})
+    const response=await axios.put(`${path}/Api/v1/delete-book-from-favourite`,{},{headers})
        alert(response.data.message)
   }
   return (

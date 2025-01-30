@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import Loader from '../components/Loader/Loader'
 import BookCard from '../components/BookCard/BookCard'
+import { path } from '../url'
 const AllBooks = () => {
 
   const [Data,setData]=useState()
@@ -9,7 +10,7 @@ const AllBooks = () => {
 useEffect(()=>{
 
     const fetch=async()=>{
-      const response= await axios.get("http://localhost:4010/Api/v1/get-all-books")
+      const response= await axios.get(`${path}/Api/v1/get-all-books`)
       setData(response.data.data)
     }
     fetch()

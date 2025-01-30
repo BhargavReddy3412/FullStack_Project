@@ -3,6 +3,7 @@ import axios from 'axios'
 import Loader from '../components/Loader/Loader'
 import { FaUserLarge } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
+import { path } from '../url';
 
 const AllOrdersAdmin = () => {
   const [AllOrders,setAllOrders]=useState()
@@ -12,7 +13,7 @@ const AllOrdersAdmin = () => {
   }
   useEffect(()=>{
     const fetch=async()=>{
-      const response=await axios.get("http://localhost:4010/Api/v1//get-all-orders",{headers})
+      const response=await axios.get(`${path}/Api/v1//get-all-orders`,{headers})
        setAllOrders(response.data)
     }
     fetch()
