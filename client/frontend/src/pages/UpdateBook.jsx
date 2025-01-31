@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import axios from "axios";
 import { useParams,useNavigate } from 'react-router-dom';
-
+import {message} from "antd"
 const UpdateBook = () => {
   const  {id}=useParams()
   const navigate=useNavigate()
@@ -36,7 +36,7 @@ const UpdateBook = () => {
             Data.desc === "" ||
             Data.language===""
           ) {
-            alert("All Fields are Required");
+            message.error("All Fields are Required");
           } else {
             const response = await axios.put(
               "http://localhost:4010/Api/v1/update-book",
@@ -52,11 +52,11 @@ const UpdateBook = () => {
               desc: "",
               language: "",
             });
-            alert(response.data.message);
+            message.success(response.data.message);
             navigate(`/view-book-details/${id}`)
           }
         } catch (err) {
-          alert(err.response.data.message);
+          message.error(err.response.data.message);
         }
         
       };

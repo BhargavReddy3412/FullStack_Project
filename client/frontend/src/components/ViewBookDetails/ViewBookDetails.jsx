@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { path } from "../../url";
+import { message } from "antd"
 
 const ViewBookDetails = () => {
   const { id } = useParams();
@@ -23,7 +24,6 @@ const ViewBookDetails = () => {
       const response = await axios.get(
         `${path}/Api/v1/get-book-by-id/${id}`
       );
-      // console.log(response.data.data);
       setData(response.data.data);
     };
     fetch();
@@ -35,16 +35,26 @@ const ViewBookDetails = () => {
     bookid:id,
   }
   const handleFavourites=async()=>{
+    try{
     const response=await axios.put("http://localhost:4010/Api/v1/add-book-to-favourite",{},{headers})
 
-    alert(response.data.message)
+    message.success(response.data.message)
+    }
+    catch(err){
+      message.error("Something went Wrong")
+    }
   }
 
   const handleAddToCart=async()=>{
     const response=await axios.put("http://localhost:4010/Api/v1/add-to-cart",{},{headers})
+try{
+    message.success(response.data.message)
 
-    alert(response.data.message)
     navigate("/all-books")
+  }
+  catch(err){
+    message.error("Something went Wrong")
+  }
   }
 
 
@@ -53,7 +63,7 @@ const ViewBookDetails = () => {
 
    const response=await axios.delete("http://localhost:4010/Api/v1/delete-book",{headers})
 
-   alert(response.data.message)
+    message.success(response.data.message)
   }
 
   return (

@@ -3,6 +3,7 @@ import Loader from "../components/Loader/Loader";
 import axios from "axios";
 import { MdDelete } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import {message} from "antd"
 
 const Cart = () => {
   const [cart, setCart] = useState();
@@ -30,7 +31,7 @@ const Cart = () => {
       { headers }
     );
 
-    alert(response.data.message);
+     message.success(response.data.message);
   };
 
   useEffect(() => {
@@ -52,10 +53,10 @@ const Cart = () => {
         { headers }
       );
 
-      alert(response.data.message);
+      message.success(response.data.message);
       navigate("/profile/orderHistory");
     } catch (err) {
-      console.log(err);
+      message.error("Something Went Wrong")
     }
   };
 

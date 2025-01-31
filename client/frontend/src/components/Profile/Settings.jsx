@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loader from "../Loader/Loader";
 import { path } from "../../url";
+import {message} from "antd"
 const Settings = () => {
   const [values, setValues] = useState({ address: "" });
   const [profileData, setProfileData] = useState();
@@ -28,10 +29,14 @@ const Settings = () => {
   }, []);
 
   const handleUpdateAddress=async()=>{
-
+try{
     const response= await axios.put(`${path}/Api/v1/update-address`,values,{headers})
 
-     alert(response.data.message)
+     message.success(response.data.message)
+}
+   catch(err){
+    message.error("Something went Wrong")
+   }
   }
   return (
     <>

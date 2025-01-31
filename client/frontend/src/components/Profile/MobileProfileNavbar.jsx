@@ -1,10 +1,23 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../store/auth";
+import { useNavigate } from "react-router-dom";
 const MobileProfileNavbar = () => {
 
   const role=useSelector((state)=>state.auth.role)
-  
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+    const handleLogout = () => {
+      dispatch(authActions.logout());
+      dispatch(authActions.changeRole("user"));
+      localStorage.clear("id");
+      localStorage.clear("token");
+      localStorage.clear("role");
+      navigate("/");
+    };
 
   return (
 
@@ -27,14 +40,15 @@ const MobileProfileNavbar = () => {
         to="/profile/settings"
         className="text-zinc-100 font-semibold w-full text-center hover:bg-zinc-900 rounded transition-all duration-300"
       >
-        Settings
+        Settings  
       </Link>
-           {/* <button
-              className="bg-zinc-900 w-3/6 lg:w-full mt-4 lg:mt-0 text-white font-semibold flex items-center justify-center py-2 rounded hover:bg-white hover:text-zinc-900 transition-all duration-300 sm:hiiden"
-              // onClick={handleLogout}
+           <button
+              className="hidden md:flex"
+              // className="bg-zinc-900 w-3/6 lg:w-full mt-4 lg:mt-0 text-white font-semibold flex items-center justify-center py-2 rounded hover:bg-white hover:text-zinc-900 transition-all duration-300 hidden"
+              onClick={handleLogout}
             >
               Log Out
-            </button> */}
+            </button>
 
     </div>) }
 

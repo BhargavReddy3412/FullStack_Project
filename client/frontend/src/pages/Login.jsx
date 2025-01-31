@@ -3,6 +3,7 @@ import { Link,useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { authActions } from '../store/auth'
 import { useDispatch } from 'react-redux'
+import {message} from "antd"
 const Login = () => {
 
   const [logInValues,setLogInValues]= useState({username:"",password:""})
@@ -17,7 +18,7 @@ const Login = () => {
      const handleLogIn=async ()=>{
       try{
             if(logInValues.username===""|| logInValues.password===""){
-              alert("All fields are Required")
+              message.error("All fields are Required")
             }
             else{
               const response=await axios.post("http://localhost:4010/Api/v1/sign-in",logInValues)
@@ -27,11 +28,12 @@ const Login = () => {
               localStorage.setItem("id",response.data.id)
               localStorage.setItem("token",response.data.token)
               localStorage.setItem("role",response.data.role)
+              message.success("Login Successfully Done")
               navigate("/profile")
             }
       }
       catch(err){
-    alert(err.response.data.message)
+    message.error(err.response.data.message)
       }
     }
   return (

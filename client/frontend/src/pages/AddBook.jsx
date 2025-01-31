@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { message } from "antd";
 
 const AddBook = () => {
   const [Data, setData] = useState({
@@ -31,7 +32,7 @@ const AddBook = () => {
         Data.desc === "" ||
         Data.language===""
       ) {
-        alert("All Fields are Required");
+        message.error("All Fields are Required");
       } else {
         const response = await axios.post(
           "http://localhost:4010/Api/v1/add-book",
@@ -47,10 +48,10 @@ const AddBook = () => {
           desc: "",
           language: "",
         });
-        alert(response.data.message);
+       message.success(response.data.message);
       }
     } catch (err) {
-      alert(err.response.data.message);
+       message.error(err.response.data.message);
     }
   };
 

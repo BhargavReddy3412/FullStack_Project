@@ -19,7 +19,6 @@
          { headers }
        );
        setOrderHistory(response.data.data);
-       console.log(response.data);
      };
      fetch();
    }, []);

@@ -9,7 +9,7 @@ const Footer = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsSmallDevice(window.innerWidth < 768);
+      setIsSmallDevice(window.innerWidth < 625);
     };
 
     handleResize();
@@ -20,7 +20,7 @@ const Footer = () => {
     };
   }, []);
 
-  if (location.pathname === '/profile' && isSmallDevice) {
+  if (isSmallDevice && location.pathname === '/profile'||location.pathname==='/profile/orderHistory'  || location.pathname==='/profile/settings'|| location.pathname==='/profile/add-book' ) {
     return null;
   }
 
