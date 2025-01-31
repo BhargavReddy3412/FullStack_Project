@@ -24,6 +24,10 @@ const AddBook = () => {
   };
 
   const handleAddBook = async () => {
+    if (!Data.url.startsWith("https://")) {
+      message.error("Please provide a valid URL that starts with https://");
+      return;
+    }
     try {
       if (
         Data.url === "" ||
