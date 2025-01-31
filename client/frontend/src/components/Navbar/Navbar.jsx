@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaGripLines } from "react-icons/fa";
 import { useSelector } from "react-redux";
+
 const Navbar = () => {
   const links = [
     {
@@ -9,7 +10,7 @@ const Navbar = () => {
       link: "/",
     },
     {
-      title: "All Books",
+      title: "Books",
       link: "/all-books",
     },
     {
@@ -55,6 +56,7 @@ const Navbar = () => {
       links.splice(4,1)
     }
   }
+ 
   return (
     <>
       <nav className="z-50 relative bg-zinc-800 text-white px-8 py-4 flex items-center justify-between">
@@ -69,12 +71,12 @@ const Navbar = () => {
         <div className="nav-links-bookheaven block md:flex items-center gap-4">
           <div className="hidden md:flex gap-4">
             {links.map((item, index) => (
-              <div className="flex items-center">
+              <div className="flex items-center" key={index}>
                 {item.title === "Profile" ||item.title === "Admin Profile" ? (
                   <Link
                     to={item.link}
                     className="px-4 py-1 border  border-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300"
-                    key={index}
+                    
                   >
                     {item.title}
                   </Link>
@@ -95,13 +97,13 @@ const Navbar = () => {
             <div className="hidden md:flex gap-4">
               <Link
                 to="/LogIn"
-                className="px-4 py-1 border border-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300"
+                className="px-4 py-1 border border-blue-500 rounded hover:bg-red hover:text-zinc-800 hover:bg-white transition-all duration-300"
               >
                 Login
               </Link>
               <Link
                 to="/SignUp"
-                className="px-4 py-1 bg-blue-500 rounded  hover:bg-white hover:text-zinc-800 transition-all duration-300"
+                className="px-4 py-1 border border-blue-500 rounded  hover:bg-white hover:text-zinc-800 transition-all duration-300"
               >
                 signUp
               </Link>
@@ -120,12 +122,12 @@ const Navbar = () => {
         </div>
       </nav>
       <div
-        className={`${MobileNav} bg-zinc-800 h-screen absolute top-0 left-0 w-full z-40 flex flex-col items-center justify-center`}
+        className={`${MobileNav}  bg-[rgba(0,0,0,0.7)] h-screen absolute top-0 left-0 w-full z-40 flex flex-col items-center justify-center`}
       >
         {links.map((item, index) => (
           <Link
             to={item.link}
-            className={`${MobileNav} text-white text-2xl mb-4 font-semibold hover:text-blue-500 transition-all duration-300`}
+            className={`${MobileNav} text-white text-lg mb-4 font-serif hover:text-blue-500 transition-all duration-300`}
             key={index}
             onClick={() =>
               MobileNav === "hidden"
@@ -141,16 +143,32 @@ const Navbar = () => {
           <>
             <Link
               to="/LogIn"
-              className={`${MobileNav} px-8 mb-8 text-3xl font-semibold py-2 border border-blue-500 rounded text-white hover:bg-white hover:text-zinc-800 transition-all duration-300`}
+              className={`${MobileNav} px-8 mb-8 text-lg font-serif py-2 border border-blue-500 rounded text-white hover:bg-white hover:text-zinc-800 transition-all duration-300`}
+              onClick={() =>
+                MobileNav === "hidden"
+                  ? setMobileNav("block")
+                  : setMobileNav("hidden")
+              }
             >
               Login
             </Link>
+ 
+
             <Link
               to="/SignUp"
-              className={`${MobileNav} px-8 mb-8 text-3xl font-semibold py-2 bg-blue-500 rounded  hover:bg-white hover:text-zinc-800 transition-all duration-300`}
+              className={`${MobileNav} px-8 mb-8 text-lg font-serif py-2 border border-blue-500 rounded text-white hover:bg-white hover:text-zinc-800 transition-all duration-300`}
+              
+              onClick={() =>
+                MobileNav === "hidden"
+                  ? setMobileNav("block")
+                  : setMobileNav("hidden")
+              }
             >
-              signUp
+              signup
             </Link>
+
+
+
           </>
         )}
       </div>
@@ -159,3 +177,8 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+
+
+ 

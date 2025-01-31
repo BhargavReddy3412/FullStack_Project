@@ -77,7 +77,7 @@ try{
               onChange={handelAddress}
             ></textarea>
           </div>
-          <div className="mt-4 flex justify-end">
+          <div className="mt-4 flex justify-end " >
             <button className="bg-yellow-500 text-zinc-900 font-semibold px-3 py-2 rounded hover:bg-yellow-400" onClick={handleUpdateAddress}>Update</button>
 
           </div>

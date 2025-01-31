@@ -39,6 +39,7 @@ const ViewBookDetails = () => {
     const response=await axios.put(`${path}/Api/v1/add-book-to-favourite`,{},{headers})
 
     message.success(response.data.message)
+    navigate("/all-books")
     }
     catch(err){
       message.error("Something went Wrong")

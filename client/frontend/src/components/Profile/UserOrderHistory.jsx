@@ -30,7 +30,7 @@
          </div>
        )}
        {orderHistory && orderHistory.length === 0 && (
-         <div className="h-[80vh] p-4 text-zinc-100">
+         <div className="h-[40vh] p-4 text-zinc-100">
            <div className="h-[100%] flex flex-col items-center justify-center">
              <h1 className="text-5xl font-semibold text-zinc-500 mb-8">
                No Order History
@@ -68,7 +68,7 @@
 
            {orderHistory.filter((item)=>item.book !==undefined).map((item, index) => (
              <>
-               <div className="bg-zinc-800 w-full rounded py-2 px-4 flex gap-4 hover:bg-zinc-900 hover:cursor-pointer">
+               <div className="bg-zinc-800 w-full rounded py-2  px-4 flex gap-4 hover:bg-zinc-900 hover:cursor-pointer">
                  <div className="w-[3%]">
                    <h1 className="text-center">{index + 1}</h1>
                  </div>

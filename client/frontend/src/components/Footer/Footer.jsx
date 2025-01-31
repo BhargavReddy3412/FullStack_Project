@@ -20,7 +20,13 @@ const Footer = () => {
     };
   }, []);
 
-  if (isSmallDevice && location.pathname === '/profile'||location.pathname==='/profile/orderHistory'  || location.pathname==='/profile/settings'|| location.pathname==='/profile/add-book' ) {
+ if((window.innerWidth<625 && location.pathname==='/profile/orderHistory') ){
+  return null
+ }
+ if((window.innerWidth<625 && location.pathname==='/profile/settings') ){
+  return null
+ }
+else if (isSmallDevice && location.pathname === '/profile'|| location.pathname==='/profile/add-book' ) {
     return null;
   }
 

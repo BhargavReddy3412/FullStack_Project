@@ -19,7 +19,7 @@ const ProfilSideBar = ({ data }) => {
     navigate("/");
   };
   return (
-    <div className="bg-zinc-800 p-4 rounded flex flex-col items-center justify-between h-auto lg:h-[100%]">
+    <div className="bg-zinc-800 p-4 rounded flex flex-col items-center justify-around h-auto lg:h-[100%]">
       <div className="flex items-center flex-col justify-center">
         <img src={data.avatar} className="h-[12vh]" />
         <p className="mt-3 text-xl text-zinc-100 font-semibold">
@@ -30,14 +30,8 @@ const ProfilSideBar = ({ data }) => {
       </div>
 
 
-     {role ==="user" && (<div className="w-full flex-col items-center justify-center hidden lg:flex">
-      <button
-      className=""
-        onClick={handleLogout}
-      >
-        Log Out
-        <FaArrowRightFromBracket className="ms-4" />
-      </button>
+     {role ==="user" && (<div className="w-full flex-col items-center justify-center hidden lg:flex ">
+      
         <Link
           to="/profile"
           className="text-zinc-100 font-semibold w-full py-2 text-center hover:bg-zinc-900 rounded transition-all duration-300"
@@ -46,7 +40,7 @@ const ProfilSideBar = ({ data }) => {
         </Link>
         <Link
           to="/profile/orderHistory"
-          className="text-zinc-100 font-semibold w-full py-2 mt-4 text-center hover:bg-zinc-900 rounded transition-all duration-300"
+          className="text-zinc-100 font-semibold w-full py-2 mt-4 text-center  hover:bg-zinc-900 rounded transition-all duration-300"
         >
           Order History
         </Link>
@@ -56,26 +50,19 @@ const ProfilSideBar = ({ data }) => {
         >
           Settings
         </Link>
-
+        <button
+      className="hover:bg-white hover:text-zinc-900 hover:w-20 hover:rounded"
+        onClick={handleLogout}
+      >
+        Log Out
+        <FaArrowRightFromBracket className="ms-4" />
+      </button>
       </div>)} 
   
       {role==="admin" &&(<div className="w-full flex-col items-center justify-center hidden lg:flex">
-        {/* <Link
-          to="/profile"
-          className="text-zinc-100 font-semibold w-full py-2 text-center hover:bg-zinc-900 rounded transition-all duration-300"
-        >
-          All Orders
-        </Link> */}
-        
-        <Link
-          to="/profile/add-book"
-          className="text-zinc-100 font-semibold w-full py-2 mt-4 text-center hover:bg-zinc-900 rounded transition-all duration-300"
-        >
-           Add Book
-        </Link>
         <button
         onClick={handleLogout}
-        className=""
+        className="flex border border-blue-500 px-2 py-1 rounded hover:bg-red-500"
       >
         Log Out
         <FaArrowRightFromBracket className="ms-4" />

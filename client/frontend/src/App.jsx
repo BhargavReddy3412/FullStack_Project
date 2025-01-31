@@ -40,9 +40,10 @@ import UpdateBook from './pages/UpdateBook'
         <Route  path="/SignUp" element={<SignUp/>}></Route>
         <Route  path="/cart" element={<Cart/>}></Route>
         <Route  path="/profile" element={<Profile/>}>
-        {role==="user" ?<Route index element={<Favourites/>}/> :<Route index element={<AllOrdersAdmin/>}/>}
+        {role==="user" ?<Route index element={<Favourites/>}/> :<Route index element={<AddBook/>}/>}
 
-        {role==="admin" && <Route path='/profile/add-book' element={<AddBook/>}/>}
+
+
         <Route path='/profile/orderHistory' element={<UserOrderHistory/>}/>
         <Route path='/profile/settings' element={<Settings/>}/>
         </Route>
