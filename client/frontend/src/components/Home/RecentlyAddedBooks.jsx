@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import BookCard from '../BookCard/BookCard'
 import Loader from '../Loader/Loader'
+import { path } from '../../url'
 const RecentlyAddedBooks = () => {
 
 const [Data,setData]=useState()
@@ -9,7 +10,7 @@ const [Data,setData]=useState()
 useEffect(()=>{
 
     const fetch=async()=>{
-      const response= await axios.get("http://localhost:4010/Api/v1/get-recent-books")
+      const response= await axios.get(`${path}/Api/v1/get-recent-books`)
       setData(response.data.data)
     }
     fetch()

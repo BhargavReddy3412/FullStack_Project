@@ -78,6 +78,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {message} from 'antd'
+import { path } from "../url";
 
 const SignUp = () => {
   const [signUpValues, setSignUpValues] = useState({
@@ -106,7 +107,7 @@ const SignUp = () => {
        message.error("All fields are required");
       } else {
         const response = await axios.post(
-          "http://localhost:4010/Api/v1/sign-up",
+          `${path}/Api/v1/sign-up`,
           signUpValues
         );
         message.success(response.data.message);

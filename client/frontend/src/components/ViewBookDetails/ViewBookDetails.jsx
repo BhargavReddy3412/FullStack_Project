@@ -36,7 +36,7 @@ const ViewBookDetails = () => {
   }
   const handleFavourites=async()=>{
     try{
-    const response=await axios.put("http://localhost:4010/Api/v1/add-book-to-favourite",{},{headers})
+    const response=await axios.put(`${path}/Api/v1/add-book-to-favourite`,{},{headers})
 
     message.success(response.data.message)
     }
@@ -46,7 +46,7 @@ const ViewBookDetails = () => {
   }
 
   const handleAddToCart=async()=>{
-    const response=await axios.put("http://localhost:4010/Api/v1/add-to-cart",{},{headers})
+    const response=await axios.put(`${path}/Api/v1/add-to-cart`,{},{headers})
 try{
     message.success(response.data.message)
 
@@ -61,7 +61,7 @@ try{
 
   const handleDeleteBook= async()=>{
 
-   const response=await axios.delete("http://localhost:4010/Api/v1/delete-book",{headers})
+   const response=await axios.delete(`${path}/Api/v1/delete-book`,{headers})
 
     message.success(response.data.message)
   }

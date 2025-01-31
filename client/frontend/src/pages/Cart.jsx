@@ -4,6 +4,7 @@ import axios from "axios";
 import { MdDelete } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import {message} from "antd"
+import { path } from "../url";
 
 const Cart = () => {
   const [cart, setCart] = useState();
@@ -16,7 +17,7 @@ const Cart = () => {
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(
-        "http://localhost:4010/Api/v1/get-user-cart",
+        `${path}/Api/v1/get-user-cart`,
         { headers }
       );
       setCart(response.data.data);
@@ -26,7 +27,7 @@ const Cart = () => {
 
   const handledeleteItem     = async (bookid) => {
     const response = await axios.put(
-      `http://localhost:4010/Api/v1/remove-from-cart/${bookid}`,
+      `${path}/Api/v1/remove-from-cart/${bookid}`,
       {},
       { headers }
     );
@@ -48,7 +49,7 @@ const Cart = () => {
   const handlePlaceOrder = async () => {
     try {
       const response = await axios.post(
-        `http://localhost:4010/Api/v1/place-order`,
+        `${path}/Api/v1/place-order`,
         { order: cart },
         { headers }
       );
