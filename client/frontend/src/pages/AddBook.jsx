@@ -24,11 +24,20 @@ const AddBook = () => {
   };
 
   const handleAddBook = async () => {
-    if (!Data.url.startsWith("https://")) {
+ 
+    if (!Data.url.trim().startsWith("https://")) {
       message.error("Please provide a valid URL that starts with https://");
       return;
     }
+    
     try {
+  if (
+    !Data.url.trim().startsWith("http://") &&
+    !Data.url.trim().startsWith("https://")
+  ) {
+    message.error("Please provide a valid URL that starts with http:// or https://");
+    return;
+  }
       if (
         Data.url === "" ||
         Data.title === "" ||
@@ -167,3 +176,4 @@ const AddBook = () => {
 };
 
 export default AddBook;
+
