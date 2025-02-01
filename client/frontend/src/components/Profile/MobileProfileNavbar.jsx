@@ -43,7 +43,7 @@ const MobileProfileNavbar = () => {
         Settings  
       </Link>
            <button
-              className="hidden md:flex"
+              className="hidden md:flex border border-blue-500 p-2 rounded hover:bg-red-500"
               onClick={handleLogout}
             >
               Log Out
@@ -52,12 +52,12 @@ const MobileProfileNavbar = () => {
     </div>) }
 
     {role==="admin" &&( <div className="w-full flex lg:hidden items-center justify-between mt-4">
-      <Link
+      {/* <Link
         to="/profile/add-book"
         className="text-zinc-100 font-semibold w-full text-center hover:bg-zinc-900 rounded transition-all duration-300"
       >
         Add Book
-      </Link>
+      </Link> */}
 
     </div>) }
     </>);

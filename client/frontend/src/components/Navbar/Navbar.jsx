@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaGripLines } from "react-icons/fa";
+import { IoReorderThreeOutline } from "react-icons/io5";
 import { useSelector } from "react-redux";
-
+import Logo from "../../assets/th-removebg-preview.png"
+import BigLogo from "../../assets/th-big-removebg-preview-big.png"
 const Navbar = () => {
   const links = [
     {
@@ -56,17 +57,19 @@ const Navbar = () => {
       links.splice(4,1)
     }
   }
+
+  let width=window.innerWidth
  
   return (
     <>
       <nav className="z-50 relative bg-zinc-800 text-white px-8 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center">
           <img
-            className="h-10 me-4"
-            src="https://tse2.mm.bing.net/th?id=OIP.20Z2L1I8ovr_AYi6EIUGcwHaD-&pid=Api&P=0&h=180"
+            className={`h-10 me-4 ${width>425?'w-40':''} ${width>425?'h-35':''}`}            
+            src={Logo}
             alt="logo"
           />
-          <h1 className="text-2xl font-semibold">BookHeaven</h1>
+         
         </Link>
         <div className="nav-links-bookheaven block md:flex items-center gap-4">
           <div className="hidden md:flex gap-4">
@@ -117,7 +120,7 @@ const Navbar = () => {
                 : setMobileNav("hidden")
             }
           >
-            <FaGripLines />
+            <IoReorderThreeOutline />
           </button>
         </div>
       </nav>

@@ -95,7 +95,6 @@ const SignUp = () => {
               onChange={handleChange}
             />
           </div>
-          {/* Role Selection */}
           <div className="mt-4">
             <label className="text-zinc-400">Role</label>
             <select

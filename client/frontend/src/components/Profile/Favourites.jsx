@@ -18,16 +18,20 @@ const Favourites = () => {
     fetch()
   }, [favouriteBooks])
 
+  let width=window.innerWidth
+
   return (
     <>
       {favouriteBooks.length === 0 && (
-        <div className='text-4xl font-semibold text-zinc-500 h-[100%] flex flex-col items-center sm:justify-between md:justify-around w-full'>
+        <div className='text-xl md:text-4xl font-semibold text-zinc-500 h-[100%] flex flex-col items-center sm:justify-center  md:justify-around w-full'>
           No Favourite Books
-          <img
-            className='w-full max-w-xs object-contain md:max-w-sm lg:max-w-md rounded opacity-40'
+          
+          {width>625 &&(          <img
+            className='w-full max-w-xs object-contain md:max-w-sm lg:max-w-md rounded opacity-40 md:'
             src="https://img.freepik.com/premium-vector/no-favorites_878233-548.jpg?w=2000"
             alt="favourite image"
-          />
+          />)}
+
         </div>
       )}
 

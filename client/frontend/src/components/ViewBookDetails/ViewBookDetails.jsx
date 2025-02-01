@@ -7,7 +7,6 @@ import { FaHeart } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import { FaEdit } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
 import { path } from "../../url";
 import { message } from "antd"
 
@@ -59,13 +58,7 @@ try{
   }
 
 
-
-  const handleDeleteBook= async()=>{
-
-   const response=await axios.delete(`${path}/Api/v1/delete-book`,{headers})
-
-    message.success(response.data.message)
-  }
+  
 
   return (
     <>
@@ -81,11 +74,11 @@ try{
 
               {isLoggedIn === true && role === "user" && (
                 <div className="flex flex-col md:flex-row lg:flex-col mt-4 lg:mt-0 items-center justify-between lg:justify-start">
-                  <button className="bg-white rounded lg:rounded-full text-3xl p-3 text-red-500 flex items-center justify-center" onClick={handleFavourites}>
+                  <button className="bg-white rounded lg:rounded-full text-xl md:text-3xl p-3 text-red-500 flex items-center justify-center" onClick={handleFavourites}>
                     <FaHeart />
                     <span className="ms-4 block lg:hidden">Add To Fav</span>
                   </button>
-                  <button className="text-white rounded mt-8 md:mt-0 lg:rounded-full text-3xl p-3  lg:mt-8 bg-blue-500 flex items-center justify-center" onClick={handleAddToCart}>
+                  <button className="text-white rounded mt-8 md:mt-0 lg:rounded-full text-xl md:text-3xl p-3  lg:mt-8 bg-blue-500 flex items-center justify-center" onClick={handleAddToCart}>
                     <FaCartShopping />
                     <span className="ms-4 block lg:hidden">Add To Cart</span>
                   </button>
@@ -94,21 +87,17 @@ try{
 
               {isLoggedIn === true && role === "admin" && (
                 <div className="flex  flex-col md:flex-row lg:flex-col mt-4 lg:mt-0 items-center justify-between lg:justify-start">
-                  <Link to={`/updateBook/${id}`} className="bg-white rounded lg:rounded-full text-3xl p-3 flex items-center justify-center">
+                  <Link to={`/updateBook/${id}`} className="bg-white rounded lg:rounded-full text-xl md:text-3xl  p-3 flex items-center justify-center">
                   <FaEdit />  
-                    <span className="ms-4 block lg:hidden">Edit</span>
+                    <span className="ms-4 block text-xl md:text-3xl  lg:hidden">Edit</span>
                   </Link>
-                  {/* <button className="text-red-500 rounded mt-8 md:mt-0  lg:rounded-full text-3xl p-3  lg:mt-8 bg-white flex items-center justify-center" onClick={handleDeleteBook}>
-                  <MdDelete />
-                    <span className="ms-4 block lg:hidden">Delete</span>
-                  </button> */}
                 </div>
               )}
             </div>
           </div>
 
           <div className="p-4 w-full  lg:w-3/6">
-            <h1 className="text-4xl text-zinc-300 font-semibold">
+            <h1 className="text-2xl md:text-4xl text-zinc-300 font-semibold">
               {Data.title}
             </h1>
             <p className="text-zinc-400 mt-1">{Data.author}</p>
@@ -117,7 +106,7 @@ try{
               <GrLanguage className="m-3" />
               {Data.language}
             </p>
-            <p className="mt-4 text-zinc-100 text-3xl font-semibold">
+            <p className="mt-4 text-zinc-100 text-2xl md:text-3xl font-semibold">
               {" "}
               Price ₹{Data.price}
             </p>

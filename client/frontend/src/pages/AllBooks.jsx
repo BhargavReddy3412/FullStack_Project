@@ -17,7 +17,7 @@ useEffect(()=>{
 },[])
   return (
     <div className={`bg-zinc-900 ${Data && Data.length > 1 ? "h-auto" : "min-h-screen"} px-12 py-8`}>
-            <h4 className='text-3xl text-yellow-100'>All Books</h4>
+            <h4 className='text-2xl md:text-3xl text-yellow-100'>All Books</h4>
       {!Data && <div className='flex items-center justify-center my-8'><Loader/></div>}
       <div className='my-8 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-8'>
        {Data && Data.map((item,index)=>(

@@ -32,7 +32,7 @@
        {orderHistory && orderHistory.length === 0 && (
          <div className="h-[40vh] p-4 text-zinc-100">
            <div className="h-[100%] flex flex-col items-center justify-center">
-             <h1 className="text-5xl font-semibold text-zinc-500 mb-8">
+             <h1 className="text-2xl md:text-5xl font-semibold text-zinc-500 mb-8">
                No Order History
              </h1>
            </div>

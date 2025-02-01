@@ -8,7 +8,7 @@ const Hero = () => {
     <div className="h-[75vh] flex flex-col md:flex-row items-center justify-center">
       <div className="w-full mb-12 md:mb-0 lg:w-3/6 flex flex-col items-center lg:items-start justify-center">
         {" "}
-        <h1 className="text-4xl lg:text-6xl font-semibold text-yellow-100 text-center lg:text-left">
+        <h1 className="text-2xl md:text-4xl lg:text-6xl font-semibold text-yellow-100 text-center lg:text-left">
           Discover Your Next Great Read
         </h1>
         <p className="mt-4 text-xl text-zinc-300 text-center lg:text-left">

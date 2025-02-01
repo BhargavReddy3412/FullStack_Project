@@ -9,7 +9,6 @@ import MobileProfileNavbar from '../components/Profile/MobileProfileNavbar'
  import { useLocation } from 'react-router-dom'
 const Profile = () => {
    const location = useLocation();
-  // const isLoggedIn =useSelector()
   const [profile,setProfile]=useState()
   const [orderhistory,setOrderhistory]=useState([])
   const headers={
